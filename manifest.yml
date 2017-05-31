@@ -3,3 +3,5 @@ applications:
 - name: prerequisite
   path: build/libs/prerequisite.jar
   random-route: true
+  env: {}
+

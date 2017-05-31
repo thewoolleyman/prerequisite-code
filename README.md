@@ -76,15 +76,6 @@ The time you save and insights you gain into your code will far outweigh
 the cost of the Ultimate edition.
 
 Once IntelliJ is installed, [configure your JDK](https://www.jetbrains.com/help/idea/2017.1/working-with-sdks.html?search=sdk#manage_sdks).
-Next, open the sample project.
-Edit the controller to return the string `I'm ready for PAL`.
-
-```java
-@GetMapping
-public String message() {
-    return "I'm ready for PAL";
-}
-```
 
 # Package manager
 We'll use package managers to install much of the course software.
@@ -113,10 +104,31 @@ cf login -a api.run.pivotal.io
 ```
 
 # Deploying to CF
-Build your application again, then push it to Cloud Foundry
+The provided application is your scorecard. As we work through PAL, 
+you will submit your exercises along the way. The app you will push
+will talk to the API of the submission app and display your progress.
+
+Build the app, and then push it to CF with the commands below:
 ```bash
 ./gradlew build
 cf push
+```
+
+This will eventually fail- we need to set some environment variables
+in order for our app to work correctly.
+
+Open the deployment manifest (`manifest.yml`) and add some variables.
+The scorecard app needs to have:
+* CADDY_URL - The url for the Caddy API
+* EMAIL - Your email address
+* CADDY_API_KEY - The API key you received from the PAL team
+
+You should end up with something like:
+```yaml
+  env:
+    CADDY_URL: https://pal-caddy.cfapps.io
+    EMAIL: email@example.com
+    CADDY_API_KEY: 1234-abcdef-56789
 ```
 
 You will see some output when the deployment is complete.
@@ -137,23 +149,7 @@ buildpack: java_buildpack
 Visit your app's url in a browser to make sure that it has deployed
 correctly.
 If everything is working you should see your message
-`I'm ready for PAL`.
-
-# Submit your results
-
-Once you are confident that your app is running, you're ready to submit.
-Edit the `build.gradle` file, filling in your email address.
-
-Submit you prerequisite status to us with the following command.
-_Note:_ The prerequisiteUrl must be a fully-qualified url (it must include `http://`).
-
-```bash
-./gradlew submitPrerequisites -PprerequisiteUrl=http://your-app-url
-```
-
-If you see `BUILD SUCCESSFUL` then you're done.
-If you see `BUILD FAILED` then check your app's deployment and fix any
-errors.
+`Welcome to PAL`.
 
 # Other software
 Install the following packages using your package manager.
