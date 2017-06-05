@@ -12,7 +12,7 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2c3248">
 
-    <title>TITLE HERE</title>
+    <title>PAL Scorecard</title>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Merriweather:300,400|Open+Sans:300,600">
     <link rel="stylesheet" href="/app.css">
