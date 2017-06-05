@@ -103,6 +103,12 @@ new account with the CF CLI
 cf login -a api.run.pivotal.io
 ```
 
+CF organizes your apps in to organizations and spaces, so we will need
+to create both of those. Log in to Apps Manager at [console.run.pivotal.io](console.run.pivotal.io)
+and create an org and a space. You can choose whatever name you like
+for either, but we suggest something like <your username>-org for the org
+name, and sandbox for the space name.
+
 # Deploying to CF
 The provided application is your scorecard. As we work through PAL, 
 you will submit your exercises along the way. The app you will push
@@ -129,6 +135,11 @@ You should end up with something like:
     CADDY_URL: https://pal-caddy.cfapps.io
     EMAIL: email@example.com
     CADDY_API_KEY: 1234-abcdef-56789
+```
+
+Try deploying your app again:
+```bash
+cf push
 ```
 
 You will see some output when the deployment is complete.
