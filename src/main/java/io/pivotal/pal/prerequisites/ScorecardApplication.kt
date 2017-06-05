@@ -31,7 +31,7 @@ class ScorecardApplication(
 
     init {
         val resourceHandler = ResourceHandler().apply {
-            resourceBase = "src/main/resources/static"
+            resourceBase = "static"
         }
 
         val handlerList = HandlerList(this, resourceHandler, DefaultHandler())
@@ -40,7 +40,9 @@ class ScorecardApplication(
     }
 
     val freemarkerConfig = Configuration(Configuration.VERSION_2_3_23)
-            .apply { setDirectoryForTemplateLoading(File("templates")) }
+            .apply {
+                setClassForTemplateLoading(this::class.java, "/templates")
+            }
 
     val objectMapper = ObjectMapper().registerKotlinModule()
 
