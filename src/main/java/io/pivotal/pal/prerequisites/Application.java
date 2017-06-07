@@ -14,6 +14,6 @@ public class Application {
 
     @GetMapping
     public String message() {
-        return "I'm installing dependencies";
+        return "I'm ready for PAL";
     }
 }

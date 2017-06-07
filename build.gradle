@@ -20,8 +20,8 @@ jar {
 }
 
 assignments {
-    apiUrl = "https://pal-caddy.cfapps.io"
-    email = ""
+    apiUrl = "https://prerequisite-scrubbier-acetaldehyde.cfapps.io/"
+    email = "cwoolley@pivotal.io"
 }
 
 repositories {
